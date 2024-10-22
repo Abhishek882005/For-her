@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Proposal</title>
+    <style>
+        body {
+            font-family: 'Comic Sans MS', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #fce4ec;
+            text-align: center;
+        }
+
+        .container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 90%;
+            word-wrap: break-word;
+        }
+
+        h1 {
+            color: #e91e63;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            font-size: 16px;
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        #yes, #yes2 {
+            background-color: #4caf50;
+            color: white;
+        }
+
+        #no, #no2 {
+            background-color: #f44336;
+            color: white;
+        }
+
+        #no2:hover {
+            cursor: not-allowed;
+        }
+
+        .qualities {
+            list-style: none;
+            padding: 0;
+        }
+
+        .qualities li {
+            margin: 10px 0;
+            color: #2196f3;
+        }
+
+        .highlight {
+            color: #d50000;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .disclaimer {
+            color: #e91e63;
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+
+        .greeting {
+            font-size: 18px;
+            color: #e91e63;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Greeting Page -->
+    <div class="container" id="greetingPage">
+        <h1>Hellooo MY Gummy Bear 😘🫂</h1>
+        <p class="greeting">Uth gai tum... Good Morning Sweetheart❤️💖💗💕🫶💌🩷💓💞💘💝💟♥️❣️❤️💖💗💕🫶💌🩷💓💞💘💝💟♥️❣️❤️💖💗💕🫶💌🩷💓💞💘💝💟♥️❣️<br>Fever hai? Dekho agr hai bhi to koi baat nhi, I have something for you ☺️</p>
+        
+        <div class="buttons">
+            <button id="start">Start 😊☺️</button>
+        </div>
+    </div>
+
+    <!-- Disclaimer Page -->
+    <div class="container" id="disclaimerPage" style="display: none;">
+        <h1>Disclaimer</h1>
+        <p class="disclaimer">On the next pages you would be given some options and <b>TUMKO MERI KASAM HAI YE BEECH SE DIRECT BAND MAT KARNA END TAK COMPLETE KARNA ISKO PLEASE.</b> PLEASE KAR LENA NHI TO YE KHARAB HO JAYEGA PURA 🥲🥹🙃🙏<br><br> THANKYOUU 😁❣️</p>
+        
+        <div class="buttons">
+            <button id="continue">Do You Want to Continue? Please Continue 🙃🙏</button>
+        </div>
+    </div>
+
+    <!-- First Page -->
+    <div class="container" id="page1" style="display: none;">
+        <h1>Can I steal you heart and keep it safe with me? Can I be the person who has the right to change your surname? 🥹🙃🫠</h1>
+        <p>You can only pick the right answer! 😘</p>
+
+        <div class="buttons">
+            <button id="yes">Yes 💕</button>
+            <button id="no">No 💔</button>
+        </div>
+    </div>
+
+    <!-- Second Page (Hidden Initially) -->
+    <div class="container" id="page2" style="display: none;">
+        <h1>Wait, wait! Idhar dekho zara meri ankhon me! Tumko Problem kya hai Haa bolne me? 🥺🥺</h1>
+        
+        <ul class="qualities">
+            <li> Ek baar or sochlo madam Abhishek Porwal hu mein 😎</li>
+            <li> Mana kabhi kabhi ulti seedi harkatein kar deta hu, par boys school se hu na 😅😚.</li>
+            <li> Chalo I accept bore kar deta hu kabhi kabhi par My feelings are not Timepass forsure. 🥰</li>
+            <li> Yrr dekho jaisa bhi hu, tum theek kar dena naa. 😁</li>
+        </ul>
+
+        <p class="highlight">Dekho tum ab badme soch ke bataungi mat karna kyukii mere jaisa me akela hu or meri demand bohot jyada haii theek haii.. so just click yess. Jldii karoo 😤.</p>
+
+        <div class="buttons">
+            <button id="yes2">Okay, Yes! 💕</button>
+            <button id="no2">No 💔</button>
+        </div>
+    </div>
+
+    <script>
+        const greetingPage = document.getElementById('greetingPage');
+        const disclaimerPage = document.getElementById('disclaimerPage');
+        const page1 = document.getElementById('page1');
+        const page2 = document.getElementById('page2');
+        const noButton2 = document.getElementById("no2");
+
+        // Function to handle both touch and click events
+        function handleEvent(buttonId, handler) {
+            const button = document.getElementById(buttonId);
+            button.addEventListener("click", handler);
+            button.addEventListener("touchend", handler);
+        }
+
+        // Start button on greeting page - leads to the disclaimer
+        handleEvent("start", () => {
+            greetingPage.style.display = 'none';
+            disclaimerPage.style.display = 'block';
+        });
+
+        // Disclaimer page "Continue" button - leads to the proposal
+        handleEvent("continue", () => {
+            disclaimerPage.style.display = 'none';
+            page1.style.display = 'block';
+        });
+
+        // First page "Yes" button - shows a happy message
+        handleEvent("yes", () => {
+            alert("Mujhe Pata tha tum Haa he bologi 😁, But you are totally free to choose anything, Koi zabardasti nhi hai, Na he ye rakhna ki mujhe hurt hoga, Freely No bhi bol sakti ho agr thodi si bhi problem ho tumko to 😊🙃💖");
+        });
+
+        // When "No" is clicked on the first page, it opens the second page
+        handleEvent("no", () => {
+            page1.style.display = 'none';
+            page2.style.display = 'block';
+        });
+
+        // Second page "Yes" button - shows a happy message
+        handleEvent("yes2", () => {
+            alert("Ooye maan gi ooyeeee 🥳! Kudi phasgi mere jaal me 😎😈! I Love you too Cutuuuu 😘🫂❣️...Kaisa laga ye mera proposal jo thaa, please batana kuch naya seekha hai 😁. Iska feedback zarur dena whatsapp pe 😁😁☺️. Thankyou for completing this and You are mine now 😘.");
+        });
+
+        // Second page "No" button moves around when hovered
+        noButton2.addEventListener("mouseenter", () => {
+            const randomX = Math.random() * (window.innerWidth - noButton2.offsetWidth);
+            const randomY = Math.random() * (window.innerHeight - noButton2.offsetHeight);
+            noButton2.style.position = 'absolute';
+            noButton2.style.left = `${randomX}px`;
+            noButton2.style.top = `${randomY}px`;
+        });
+    </script>
+</body>
+</html>
